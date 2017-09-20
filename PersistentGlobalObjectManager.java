@@ -30,9 +30,9 @@ public abstract class PersistentGlobalObjectManager<T extends Serializable> {
 
     public T get() {
         if (object == null) {
-            String serializedUser = sharedPreferences.getString(getObjectName(), null);
+            String serializedObject = sharedPreferences.getString(getObjectName(), null);
             try {
-                object = (T) deserialize(serializedUser);
+                object = (T) deserialize(serializedObject);
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -43,8 +43,8 @@ public abstract class PersistentGlobalObjectManager<T extends Serializable> {
     public void set(T object) {
         this.object = object;
         try {
-            String serializedUser = serialize(object);
-            editor.putString(getObjectName(), serializedUser);
+            String serializedObject = serialize(object);
+            editor.putString(getObjectName(), serializedObject);
             editor.apply();
         } catch (Exception e) {
             e.printStackTrace();
