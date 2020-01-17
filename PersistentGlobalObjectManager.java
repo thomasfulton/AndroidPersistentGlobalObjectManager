@@ -12,6 +12,9 @@ import java.io.Serializable;
 
 public abstract class PersistentGlobalObjectManager<T extends Serializable> {
 
+    
+    
+    
     public abstract String getSharedPreferencesFile();
     public abstract String getObjectName();
 
